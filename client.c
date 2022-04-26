@@ -234,6 +234,50 @@ int main()
         {
             printf("Q6 TestCase 2: " FAILED);
         }
+        int q6_t3_entry_fee[] = {2, 4};
+        amount = 1;
+        n = 2;
+        if (q6(n, amount, q6_t3_entry_fee) == 0)
+        {
+            printf("Q6 TestCase 3: " PASSED);
+        }
+        else
+        {
+            printf("Q6 TestCase 3: " FAILED);
+        }
+        int q6_t4_entry_fee[] = {2, 4};
+        amount = 3;
+        n = 2;
+        if (q6(n, amount, q6_t4_entry_fee) == 1)
+        {
+            printf("Q6 TestCase 4: " PASSED);
+        }
+        else
+        {
+            printf("Q6 TestCase 4: " FAILED);
+        }
+        int q6_t5_entry_fee[] = {2};
+        amount = 3;
+        n = 1;
+        if (q6(n, amount, q6_t5_entry_fee) == 1)
+        {
+            printf("Q6 TestCase 5: " PASSED);
+        }
+        else
+        {
+            printf("Q6 TestCase 5: " FAILED);
+        }
+        int q6_t6_entry_fee[] = {2,4,6,8};
+        amount = 5;
+        n = 4;
+        if (q6(n, amount, q6_t6_entry_fee) == 2)
+        {
+            printf("Q6 TestCase 6: " PASSED);
+        }
+        else
+        {
+            printf("Q6 TestCase 6: " FAILED);
+        }
     }
     {
          // Q7
@@ -269,6 +313,23 @@ int main()
             else
             {
                 printf("Q7 TestCase 2: " FAILED);
+            }
+        }
+        {
+            int n = 4;
+            const char *pat = "BLR";
+            int contains[4] = {0, 0, 0, 0};
+            airport_t q7_t2_airports[] = {{0, "BLR"}, {1, "MUM"}, {2, "KOL"}, {3, "BLI"}};
+
+            q7(n, pat, contains, q7_t2_airports);
+
+            if (contains[0] == 1 && contains[1] == 0 && contains[2] == 0  && contains[3] == 0)
+            {
+                printf("Q7 TestCase 3: " PASSED);
+            }
+            else
+            {
+                printf("Q7 TestCase 3: " FAILED);
             }
         }
     }
@@ -316,6 +377,30 @@ int main()
             else
             {
                 printf("Q8 TestCase 2: " FAILED);
+            }
+        }
+        {
+            connection_t q8_t1_connections[4][4] = {
+                {{0, 0}, {1, 1}, {3, 5}, {INT_MAX, INT_MAX}},
+                {{INT_MAX, INT_MAX}, {0, 0}, {1, 1}, {1, 3}},
+                {{1, 1}, {2, 4}, {0, 0}, {2, 7}},
+                {{4, 5}, {INT_MAX, INT_MAX}, {6, 3}, {0, 0}}};
+
+            int n = 4;
+            int trip_order[3] = {-1, -1, -1};
+
+            int result = q8(n, trip_order, q8_t1_connections);
+
+            if (result == 3 &&
+                ((trip_order[0] == 0 && trip_order[1] == 1 && trip_order[2] == 2) ||
+                (trip_order[0] == 2 && trip_order[1] == 0 && trip_order[2] == 1) ||
+                (trip_order[0] == 1 && trip_order[1] == 2 && trip_order[2] == 0)))
+            {
+                printf("Q8 TestCase 3: " PASSED);
+            }
+            else
+            {
+                printf("Q8 TestCase 3: " FAILED);
             }
         }
     }
